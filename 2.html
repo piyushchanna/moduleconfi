@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Assign 2</title>
+
+	<!-- Create 4 different routes with different Views -->
+
+	<!--
+
+	<!-- SCRIPTS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script type="text/javascript" src="angular-route.js"></script>
+	<script type="text/javascript">
+		    var module = angular.module("myApp", ['ngRoute']);
+		    module.controller("RouteController", function($scope, $routeParams) {
+		        $scope.param = $routeParams.param;
+		       // alert($scope.param);
+		    })
+		    module.controller("IndexController",function($scope){
+		        $scope.message = "welcome";
+		    })
+
+    		module.config(['$routeProvider',
+		        function($routeProvider) {
+		            $routeProvider.
+		                    when('/london', {
+		                        templateUrl: 'template1.html',
+		                        controller: 'RouteController'
+		                    }).
+		                    when('/paris', {
+		                        templateUrl: 'template2.html',
+		                        controller: 'RouteController'
+		                    }).
+		                    when('/thailand', {
+		                        templateUrl: 'template3.html',
+		                        controller: 'RouteController'
+		                    }).
+		                    when('/abu_dhabi', {
+		                        templateUrl: 'template4.html',
+		                        controller: 'RouteController'
+		                    }).
+		                    otherwise({						
+		                        redirectTo: '/',
+		                        templateUrl:'index.html',
+		                        controller:'IndexController'
+		                    });
+	        }]);
+		</script>
+
+</head>
+
+<body ng-app="myApp">
+
+	<div class="container">
+		<p><a href="#/">Main</a></p>
+		<p> Click on the heading for more information : </p>
+
+		<a href="#bhangad"> bhangarh</a> <br> <BR>
+		<a href="#hcl"> hcl building </a> <br> <BR>
+		<a href="#daisyHome"> daisy home </a> <br> <BR>
+		<a href="#anandvihar">d211 av</a> <br> <BR>
+		
+		<div ng-view></div>
+	</div>
+
+</body>
+</html>
